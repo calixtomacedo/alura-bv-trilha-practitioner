@@ -1,4 +1,4 @@
-package com.med.voll.controller.model.enuns;
+package com.med.voll.model.enuns;
 
 public enum Especialidade {
     ORTOPEDIA,
