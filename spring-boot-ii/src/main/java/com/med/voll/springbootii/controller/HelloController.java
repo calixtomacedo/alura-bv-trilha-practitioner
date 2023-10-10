@@ -1,5 +1,4 @@
-package com.med.voll.controller;
-
+package com.med.voll.springbootii.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
