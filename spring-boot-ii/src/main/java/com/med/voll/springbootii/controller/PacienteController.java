@@ -7,6 +7,7 @@ import com.med.voll.springbootii.domain.records.CadastroPaciente;
 import com.med.voll.springbootii.domain.records.DetalhePaciente;
 import com.med.voll.springbootii.domain.records.ListaPaciente;
 import com.med.voll.springbootii.repository.PacienteRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/pacientes")
+@SecurityRequirement(name = "bearer-key")
 public class PacienteController {
 
     @Autowired
@@ -36,7 +38,7 @@ public class PacienteController {
 
     @GetMapping
     public ResponseEntity<Page<ListaPaciente>> listar(@PageableDefault(size = 10, sort = {"nome"}) Pageable paginacao) {
-        var page = repository.findAllByAtivoTrue(paginacao).map(ListaPaciente::new);
+        var page = repository.findAllByFlativoTrue(paginacao).map(ListaPaciente::new);
         return ResponseEntity.ok(page);
     }
 

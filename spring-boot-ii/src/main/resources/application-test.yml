@@ -1,0 +1,3 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/voll_med_db_test?useTimezone=true?serverTimezone=UTC?useUnicode=yes?characterEncoding=UTF-8?useSSL=false

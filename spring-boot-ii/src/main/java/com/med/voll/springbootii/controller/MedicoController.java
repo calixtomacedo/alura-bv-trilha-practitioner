@@ -7,6 +7,7 @@ import com.med.voll.springbootii.domain.records.CadastroMedico;
 import com.med.voll.springbootii.domain.records.DetalheMedico;
 import com.med.voll.springbootii.domain.records.ListaMedico;
 import com.med.voll.springbootii.repository.MedicoRepository;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +20,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @RestController
 @RequestMapping("/medicos")
+@SecurityRequirement(name = "bearer-key")
 public class MedicoController {
 
     @Autowired
@@ -49,7 +51,7 @@ public class MedicoController {
 
     @PutMapping
     @Transactional
-    public ResponseEntity<?> update(@RequestBody @Valid AtualizaMedico dados){
+    public ResponseEntity<?> update(@RequestBody @Valid AtualizaMedico dados) {
         var medico = repository.getReferenceById(dados.id());
         medico.update(dados);
         return ResponseEntity.ok(new DetalheMedico(medico));

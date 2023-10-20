@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: ${DATASOURCE_URL}
+    username: ${DATASOURCE_USERNAME}
+    password: ${DATASOURCE_PASSWORD}
+
+  jpa:
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: false
+
+# Comando para ativar o profile ao executar o *.jar na linha de comando:
+# java -Dspring.profiles.active=prod -jar caminho/do-arquivo-jar/meu-jar.jar
+# java -Dspring.profiles.active=prod -DDATASOURCE_URL=jdbc:mysql://ip-da-maquina/nome-do-banco -DDATASOURCE_USERNAME=username -DDATASOURCE_PASSWORD=password -jar caminho/do-arquivo-jar/meu-jar.jar

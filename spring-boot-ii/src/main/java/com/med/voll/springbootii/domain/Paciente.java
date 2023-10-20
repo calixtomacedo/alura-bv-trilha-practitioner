@@ -27,10 +27,10 @@ public class Paciente {
     @Embedded
     private Endereco endereco;
 
-    private Boolean ativo;
+    private Boolean flativo;
 
     public Paciente(CadastroPaciente dados) {
-        this.ativo = true;
+        this.flativo = true;
         this.nome = dados.nome();
         this.email = dados.email();
         this.telefone = dados.telefone();
@@ -52,6 +52,6 @@ public class Paciente {
     }
 
     public void delete() {
-        this.ativo = false;
+        this.flativo = false;
     }
 }

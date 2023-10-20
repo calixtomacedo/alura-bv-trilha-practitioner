@@ -1,6 +1,7 @@
 package com.med.voll.springbootii.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.validation.ValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -25,6 +26,11 @@ public class HandleErrors {
         public FilterFieldErrors(FieldError error) {
             this(error.getField(), error.getDefaultMessage());
         }
+    }
+
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<?> handleErrorValidationRequest(ValidationException exception){
+        return ResponseEntity.badRequest().body(exception.getMessage());
     }
 
 }
